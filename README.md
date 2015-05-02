@@ -1,5 +1,5 @@
 # CodeforcesCrawler
-a python script to crawl problems in codeforces
+A python script to crawl problems in [Codeforces](http://codeforces.com/)
 ##How to use
 At first,you should install pdftk and wkhtmltopdf<br>
 Then edit crawl_html.py,in bottom,you will find this code
