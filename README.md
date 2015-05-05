@@ -3,20 +3,17 @@ A python script to crawl problems in [Codeforces](http://codeforces.com/)
 ##How to use
 At first,you should install pdftk and wkhtmltopdf<br>
 Then edit crawl_html.py,in bottom,you will find this code
+run crawl_html.py to crawl html
 ```
-begin=510
-end=530
-threads=50
+$python crawl_html.py 1 600 50
 ```
-modify it and run whit python
-```
-$python crawl_html.py
-```
+1 is contest id for begin,600 for end,50 is threads
 Wait it finish.<br>
-At last,run html2pdf.py
+Finally,run html2pdf.py
 ```
-$python html2pdf.py
+$python html2pdf.py 8
 ```
+8 is threads
 Wait a moment,you'll get all problem:
 #####problem/
 all problem in pdf in here

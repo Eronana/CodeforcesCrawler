@@ -2,6 +2,7 @@ import urllib
 import urllib2
 import re
 import os
+import sys
 import threading
 
 def get_html(url):
@@ -18,7 +19,7 @@ def down_src(html):
 	src=allre(r'src="(.*?)"').findall(html)
 	for s in src:
 		nsrc='src/'+s.replace(':','_').replace('/','_')
-		open(nsrc,"w").write(get_html(s))
+		open(workdir+nsrc,"w").write(get_html(s))
 		html=html.replace(s,'../'+nsrc)
 	return html
 def get_problem(url):
@@ -36,8 +37,6 @@ def get_contest(c):
 		contest.append((x[x.rfind('/')+1:],get_problem("http://codeforces.com"+x)))
 	title=allre(r'class="rtable.*?<a.*?>(.*?)<').findall(html)[0]
 	return (c,title,contest)
-header=open("header.html").read()
-h_list=open("html_list.txt","w")
 def save_contest(contest):
 	cid=contest[0]
 	title=contest[1].replace('/','_')
@@ -47,16 +46,15 @@ def save_contest(contest):
 		c=x[0]
 		probs.append(c)
 		html=x[1]
-		html_path='html/'+cid+'_'+c+'.html'
+		html_path=workdir+'html/'+cid+'_'+c+'.html'
 		open(html_path,'w').write(header+html)
 	h_list.write("%s----%s----%s\n"%(cid,title,','.join(probs)))
-lock = threading.RLock()
 class crawl_contest(threading.Thread):
     def __init__(this):
         threading.Thread.__init__(this)
     def run(this):
     	global begin
-    	while begin<end:
+    	while begin<=end:
 	    	lock.acquire()
 	    	curid=begin
 	    	begin+=1
@@ -69,9 +67,25 @@ class crawl_contest(threading.Thread):
 	    		save_contest(contest)
 	    		print "crawled:%d problems in contest %s"%(len(contest[2]),contest[1])
 	    	lock.release()
-begin=510
-end=530
-threads=50
-print "crawl contest %d to %d\n%d threads used"%(begin,end,threads)
+arglen=len(sys.argv)
+if arglen<4 or arglen>5:
+	print "Usage:\n\t%s begin end threads [workdir]"%sys.argv[0]
+	exit()
+if arglen==5:
+	workdir=sys.argv[4]
+else:
+	workdir="./"
+begin=int(sys.argv[1])
+end=int(sys.argv[2])
+threads=int(sys.argv[3])
+for d in ['src','html']:
+	d=workdir+d
+	if not os.path.exists(d):
+		print "makedirs:%s"%d
+		os.makedirs(d)
+lock = threading.RLock()
+header=open("header.html").read()
+h_list=open(workdir+"html_list.txt","wb")
+print "crawl contest %d to %d\n%d threads used,save in %s"%(begin,end,threads,workdir)
 for i in range(threads):
 	crawl_contest().start()
