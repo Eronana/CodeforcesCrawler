@@ -210,6 +210,7 @@ div .problem-statement-overlay {
 .tex-span {
     font-size: 125%;
     font-family: times new roman,sans-serif;
+    white-space: nowrap;
 }
 
 .tex-font-size-tiny {
@@ -285,6 +286,10 @@ div .problem-statement-overlay {
 
 .tex-font-style-sc {
     text-transform: uppercase;
+}
+
+.tex-font-style-striked {
+    text-decoration: line-through;
 }
 
 .tex-graphics {

@@ -4,7 +4,7 @@ import re
 import os
 import sys
 import threading
-
+import HTMLParser
 def get_html(url):
 	t=5
 	while t>0:
@@ -22,33 +22,22 @@ def down_src(html):
 		open(workdir+nsrc,"w").write(get_html(s))
 		html=html.replace(s,'../'+nsrc)
 	return html
-def get_problem(url):
-	html=get_html(url)
-	html=allre(r'(<div class="problemindexholder".*?)<script').findall(html)[0]
-	html=down_src(html)
-	return html
+
 def get_contest(c):
-	html=get_html("http://codeforces.com/contest/"+c)
-	p=allre(r'class="id".*?href="(.*?)"').findall(html)
+	html=get_html("http://codeforces.com/contest/%d/problems"%c)
+	p=allre('class="caption">(.*?)</div>').findall(html)
 	if len(p)==0:
 		return None
-	contest=[]
-	for x in p:
-		contest.append((x[x.rfind('/')+1:],get_problem("http://codeforces.com"+x)))
-	title=allre(r'class="rtable.*?<a.*?>(.*?)<').findall(html)[0]
-	return (c,title,contest)
+	title=HTMLParser.HTMLParser().unescape(p[0])
+	html=allre('(<div style="text-align: center;.*)').findall(html)[0]
+	html=down_src(html)
+	return (c,title,html)
 def save_contest(contest):
 	cid=contest[0]
 	title=contest[1].replace('/','_')
-	problem=contest[2]
-	probs=[]
-	for x in problem:
-		c=x[0]
-		probs.append(c)
-		html=x[1]
-		html_path=workdir+'html/'+cid+'_'+c+'.html'
-		open(html_path,'w').write(header+html)
-	h_list.write("%s----%s----%s\n"%(cid,title,','.join(probs)))
+	html=contest[2]
+	html_path=workdir+'html/[%d]%s.html'%(cid,title)
+	open(html_path,'w').write(header+html)
 class crawl_contest(threading.Thread):
     def __init__(this):
         threading.Thread.__init__(this)
@@ -59,13 +48,13 @@ class crawl_contest(threading.Thread):
 	    	curid=begin
 	    	begin+=1
 	    	lock.release()
-	    	contest=get_contest(str(curid))
+	    	contest=get_contest(curid)
 	    	lock.acquire()
 	    	if contest==None:
 	    		print "cannot crawl contest %d"%curid
 	    	else:
 	    		save_contest(contest)
-	    		print "crawled:%d problems in contest %s"%(len(contest[2]),contest[1])
+	    		print "crawled:[%d]%s"%(contest[0],contest[1])
 	    	lock.release()
 arglen=len(sys.argv)
 if arglen<4 or arglen>5:
@@ -85,7 +74,6 @@ for d in ['src','html']:
 		os.makedirs(d)
 lock = threading.RLock()
 header=open("header.html").read()
-h_list=open(workdir+"html_list.txt","wb")
 print "crawl contest %d to %d\n%d threads used,save in %s"%(begin,end,threads,workdir)
 for i in range(threads):
 	crawl_contest().start()

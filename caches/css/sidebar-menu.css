@@ -4,6 +4,10 @@
     list-style: disc inside;
 }
 
+.sidebar-menu ul ul {
+    margin: 0em 1em 0em 2em;
+}
+
 .sidebar-menu ul li {
     margin: 0.25em 0;
     padding: 0.25em 0.25em 0.25em 0.5em;

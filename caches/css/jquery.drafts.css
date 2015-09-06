@@ -23,7 +23,7 @@
 .drafts-popup {
     display: none;
     position: absolute;
-    z-index: 1024;
+    z-index: 10000;
     top: 0;
     width: 95%;
     background-color: #f8f8ff;
@@ -55,7 +55,7 @@
 }
 
 .drafts-popup h1 {
-    font-family: tahoma, arial, verdana, sans-serif, 'Lucida Sans';
+    font-family: tahoma, arial, verdana, sans-serif, 'Lucida Sans', sans-serif;
     margin-top: 10px;
 }
 
