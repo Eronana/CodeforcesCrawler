@@ -1,12 +1,17 @@
 # CodeforcesCrawler
 A python script to crawl problems in [Codeforces](http://codeforces.com/)
 ##How to use
-At first
+Install wkhtmltopdf
+```bash
+#Just for Mac users
+$ brew cask install wkhtmltopdf
+```
+Crawl problems
 ```python
 python crawl_html.py 1 123 555
 #crawl problem from  1 to 123 by 555 threads
 ```
-Then
+Convert to pdf
 ```bash
 $./html2pdf.sh
 ```
