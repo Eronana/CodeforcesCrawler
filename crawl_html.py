@@ -6,6 +6,8 @@ import sys
 import threading
 import HTMLParser
 def get_html(url):
+	if url[0]=='/':
+		url='http://codeforces.com/'+url
 	t=5
 	while t>0:
 		try:
@@ -36,7 +38,7 @@ def save_contest(contest):
 	cid=contest[0]
 	title=contest[1].replace('/','_')
 	html=contest[2]
-	html_path=workdir+'html/[%d]%s.html'%(cid,title)
+	html_path=workdir+'html/[%02d]%s.html'%(cid,title)
 	open(html_path,'w').write(header+html)
 class crawl_contest(threading.Thread):
     def __init__(this):
@@ -54,7 +56,7 @@ class crawl_contest(threading.Thread):
 	    		print "cannot crawl contest %d"%curid
 	    	else:
 	    		save_contest(contest)
-	    		print "crawled:[%d]%s"%(contest[0],contest[1])
+	    		print "crawled:[%02d]%s"%(contest[0],contest[1])
 	    	lock.release()
 arglen=len(sys.argv)
 if arglen<4 or arglen>5:
