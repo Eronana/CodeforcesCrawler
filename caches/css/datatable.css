@@ -16,8 +16,9 @@
 .datatable td, .datatable th {
     border-top: 1px solid #e1e1e1;
     border-right: 1px solid #e1e1e1;
-    padding: 0.5em;
-    font-size: 0.9em;
+    padding: 0.4em;
+    font-size: 1.3rem;
+    /*font-size: 0.9em;*/
     text-align: center;
     overflow: hidden;
 }

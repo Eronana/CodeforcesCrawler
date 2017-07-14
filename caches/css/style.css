@@ -1,6 +1,19 @@
 /* blue: #445f9d */
 /* red: #bb2024 */
 
+/*NYH*/
+/*body {*/
+    /*background: url(../images/snowflakes-background3.png);*/
+/*}*/
+
+html {
+    font-size: 10px;
+}
+
+.roundbox {
+    background-color: white;
+}
+
 body.iframed {
     overflow: hidden;
 }
@@ -38,7 +51,7 @@ body.iframed {
 
 .comment-indent span {
     color: #ace;
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
@@ -73,19 +86,20 @@ a.not-decorated {
 
 .lang-chooser {
     float: right;
+    text-align: right;
 }
 
 .logo-href {
     text-decoration: none;
     font-weight:bold;
-    font-size:10px;
+    font-size:1.0rem;
     color:black !important;
 }
 
 #sidebar {
     float: right;
     width: 20em;
-    display: inline;    
+    display: inline;
     padding-left: 4em;
     margin: 1em 1em 1em -22em;
 }
@@ -123,14 +137,38 @@ a.not-decorated {
 .search {
     border: 1px solid #d4d4d4;
     color: #666;
-    font-size: 10px;
+    font-size: 1.0rem;
     height: 16px;
     width: 9em;
     line-height: 16px;
     float: right;
     padding: 1px 1px 1px 20px;
-    margin: 4px 1em 0 0; 
+    margin: 4px 1em 0 0;
     background: #f4f4f4 url(../images/search-16x16.png) 2px 2px no-repeat;
+}
+
+.search-large {
+    border: 1px solid #d4d4d4;
+    color: #666;
+    font-size: 1.6rem;
+    height: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 24px;
+    padding: 1px 1px 1px 30px;
+    background: #f4f4f4 url(../images/search-24x24.png) 2px 2px no-repeat;
+}
+
+.search-help {
+    font-size: 1.3rem !important;
+    margin-top: 8px;
+}
+
+.search-help code {
+    font-family: Consolas, "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier;
+    border: 1px solid #d4d4d4;
+    background: #f4f4f4;
+    padding: 1px;
 }
 
 .menu-box {
@@ -162,7 +200,7 @@ a.not-decorated {
 
 .menu-list li a {
     font-weight: normal;
-    font-size: 16px;
+    font-size: 1.6rem;
     text-decoration: none;
     color: #000;
     outline: none;
@@ -193,7 +231,7 @@ a.not-decorated {
 }
 
 .menu-list li.item-highlighted * {
-    color: red;    
+    color: red;
 }
 
 .menu-list li a:hover, .menu-list li a:active, .menu-list li a:visited {
@@ -238,7 +276,7 @@ a.not-decorated {
 }
 
 .caption-edit-link {
-    float: right; 
+    float: right;
     font-size: 0.8em;
 }
 
@@ -257,7 +295,7 @@ a.not-decorated {
     margin-top: 4px;
     margin-bottom: 2px;
     padding: 1px 1px 1px 18px;
-    right: 0;  
+    right: 0;
 }
 
 .action-link img {
@@ -286,11 +324,12 @@ a.not-decorated {
 }
 
 .comment-table {
-    width: 95%;
+    width: 100%;
     margin: 0.25em;
 }
 
 .comment-table td.left {
+    /*vertical-align: top;*/
     text-align: center;
     width: 100px;
     padding: 0.5em;
@@ -309,7 +348,7 @@ a.not-decorated {
 
 .comment-table .reply .arrow {
     text-decoration: none;
-    font-size: 15px;
+    font-size: 1.5rem;
 }
 
 .comment-table .reply  a{
@@ -336,12 +375,12 @@ a.not-decorated {
 }
 
 .comment-children li {
-    margin: 0.25em 0 0.25em 4em;
+    margin: 0.1em 0 0.25em 4em;
 }
 
 .comment-content {
-    line-height: 20px;
-    font-size: 13px;
+    line-height: 2rem;
+    font-size: 1.3rem;
 }
 
 .comment-content .moveup .ttypography {
@@ -368,7 +407,7 @@ a.not-decorated {
 .comment-content div.ttypography,
 .comment-table div.ttypography {
     line-height: 20px;
-    font-size: 13px;
+    font-size: 1.3rem;
     position: relative;
     bottom: 2px;
 }
@@ -394,7 +433,7 @@ a.not-decorated {
 
 .file {
     margin: 0.5em;
-    font-size: 11px;
+    font-size: 1.1rem;
 }
 
 .file .name {
@@ -430,7 +469,7 @@ a.not-decorated {
 }
 
 #edit_area_toggle_checkbox_label {
-    font-size: 12px;
+    font-size: 1.2rem;
     margin-left: 1em;
 }
 
@@ -443,7 +482,7 @@ a.not-decorated {
 
 .contest-state-phase {
     color: #3B5998;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -473,19 +512,19 @@ img.standings-flag {
 }
 
 .small {
-    font-size: 10px !important;
+    font-size: 1.0rem !important;
 }
 
 .small * {
-    font-size: 10px !important;
+    font-size: 1.0rem !important;
 }
 
 .smaller {
-    font-size: 11px !important;
+    font-size: 1.1rem !important;
 }
 
 .smaller * {
-    font-size: 11px !important;
+    font-size: 1.1rem !important;
 }
 
 .friendStar {
@@ -496,7 +535,7 @@ img.standings-flag {
 
 .caption {
     margin: 0 0 1em 0;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #3B5998;
 }
@@ -507,13 +546,13 @@ img.standings-flag {
 
 .test-for-popup .test-header {
     font-weight: bold;
-    font-size: 11px;
+    font-size: 1.1rem;
 }
 
 .test-for-popup pre {
     border: 1px solid #aaa;
     background-color: #eee;
-    font-size: 11px;
+    font-size: 1.1rem;
 }
 
 .pagination {
@@ -576,7 +615,7 @@ div.alert-success {
     border-radius: 4px;
 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 1.4rem;
     line-height: 20px;
     color: #333333;
 }
@@ -587,7 +626,7 @@ div.alert-success {
     }
 
     .menu-list li a {
-        font-size: 14px;
+        font-size: 1.4rem;
     }
 }
 
@@ -625,4 +664,44 @@ span.participant {
 
 .clickable-title {
     cursor: pointer;
+}
+
+.spoiler .spoiler-title {
+    font-weight: normal;
+    border-bottom: 1px dashed;
+    cursor: pointer;
+}
+.spoiler:before {
+    width: 16px;
+    height: 16px;
+    content:" ";
+    float: left;
+    display: block;
+    background: url("../images/icons/control.png") no-repeat;
+    /*https://habracdn.net/habr/images/1456937768/spoiler.icon.png*/
+}
+.spoiler.spoiler-open:before {
+    background: url("../images/icons/control-270.png") left bottom no-repeat;
+    /*https://habracdn.net/habr/images/1456937768/spoiler.icon.png*/
+}
+.spoiler-content {
+    border: 1px solid gray;
+    background-color: #def;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.blog-entry-section-name {
+    color: black;
+    font-family: arial, verdana, sans-serif, 'Lucida Sans', sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.ajax-loading-gif {
+    display:none;
+    position: absolute;
+    right:-24px;
+    bottom:0;
 }

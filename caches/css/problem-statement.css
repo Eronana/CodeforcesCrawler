@@ -3,7 +3,7 @@
     /*font-family: verdana,arial,sans-serif;*/
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.5em;
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 .problem-statement .epigraph {
@@ -290,6 +290,10 @@ div .problem-statement-overlay {
 
 .tex-font-style-striked {
     text-decoration: line-through;
+}
+
+.tex-font-style-underline {
+    text-decoration: underline;
 }
 
 .tex-graphics {

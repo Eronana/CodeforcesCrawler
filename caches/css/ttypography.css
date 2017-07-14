@@ -14,15 +14,16 @@ div.ttypography {
     line-height: 21px;
     color: #222;
     -webkit-text-size-adjust: 100%;
-    font-size: 14px;
+    font-size: 1.4rem;
     word-wrap: break-word;
+    margin: 1.5em 0 0 0 !important;
     /*background-color: #ffffff;*/
 }
 
 div.ttypography .tt {
     margin: 0 4px;
     padding: 2px 4px;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     border: 1px solid #CCC;
     background-color: #F8F8F8;
     border-radius: 3px;
@@ -127,10 +128,13 @@ div.ttypography dd {
     margin: 0 0 1.5em 0.8em;
 }
 
+div.ttypography p:not(:first-child) {
+    margin: 1.5em 0 0 0;
+}
+
 div.ttypography p {
     font-size: 1em;
     line-height: 1.4em;
-    margin: 1.5em 0 0 0;
 }
 
 div.ttypography blockquote,
@@ -246,7 +250,7 @@ div.ttypography a:active {
 }
 
 /* (en) maximum constrast for tab focus - change with great care */
-/* (en) Maximaler Kontrast f�_r Tab Focus - �"ndern Sie diese Regel mit Bedacht */
+/* (en) Maximaler Kontrast f锟絖r Tab Focus - 锟�"ndern Sie diese Regel mit Bedacht */
 div.ttypography a:hover,
 div.ttypography a:focus {
     background-color: #800;

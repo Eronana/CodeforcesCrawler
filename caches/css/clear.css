@@ -4,7 +4,10 @@ textarea{margin:0;padding:2px;}
 a:link { color: #0000cc; }
 body { background: #fff; margin: 3px 8px;}
 body, select, input { font-family: verdana,arial,sans-serif;}
+/*
 body { font-size: 87.5%;}
+*/
+body { font-size: 1.4rem;}
 h1 { font-size: 1.8em; font-weight: bold;}
 h2 { font-size: 1.6em; font-weight: bold;}
 h3 { font-size: 1.4em; font-weight: bold;}

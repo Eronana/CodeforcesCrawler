@@ -5,7 +5,7 @@
 
 .roundbox .caption {
     color:#3B5998;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: bold;
     margin: 0.2em 0;
     position: relative;
@@ -17,7 +17,7 @@
 }
 
 .roundbox .caption .top-links {
-    font-size: 11px;
+    font-size: 1.1rem;
     font-family: arial;
     position: absolute;
     right: 0.5em;
@@ -26,7 +26,7 @@
 
 .roundbox .bottom-links {
     font-family: arial;
-    font-size: 11px;
+    font-size: 1.1rem;
     border-top:1px solid rgb(185, 185, 185);
     background-color: #F5F5F5;
     padding: 0.45em;
@@ -34,7 +34,7 @@
 
 .roundbox .dark {
     background-color: #F5F5F5;
-}   
+}
 
 .roundbox .bottom-links a {
     margin: 0.1em;
