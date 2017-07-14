@@ -4,7 +4,7 @@
 }
 
 .topic .title * {
-    font-size: 24px !important;
+    font-size: 2.4rem !important;
     color: #3B5998 !important;
 }
 
@@ -28,7 +28,7 @@
     /*line-height: 1.85em;*/
     /*font-size: 0.85em;*/
     line-height: 20px;
-    font-size: 12px;
+    font-size: 1.2rem;
 }
 
 .topic .content p {
@@ -55,12 +55,12 @@
 
 .topic .meta .right-meta ul li {
     float: left;
-    margin: 0 1em;
+    margin: 0 10px;
 }
 
 .topic .meta .left-meta ul li {
     float: left;
-    margin: 0 0.5em;
+    margin: 0 2px;
 }
 
 .topic .meta .left-meta ul li img {

@@ -1,6 +1,6 @@
 # CodeforcesCrawler
 A python script to crawl problems in [Codeforces](http://codeforces.com/)
-##How to use
+## How to use
 Install wkhtmltopdf
 ```bash
 #Just for Mac users

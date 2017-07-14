@@ -1,6 +1,5 @@
 .second-level-menu {
     position: absolute;
-    /*top: -0.75em;*/
     left: 7px;
     top: -12px;
 }
@@ -8,12 +7,13 @@
 .second-level-menu-list {
     position: relative;
     height: 29px;
-    /*width: 800px;*/
     overflow: hidden;
 }
 
 .second-level-menu-list li {
-    font-family: 'Arial Narrow', Arial, sans-serif;
+    /*font-family: 'Cuprum', sans-serif !important;*/
+    /*font-family: 'Arial Narrow', Arial, sans-serif;*/
+    font-family: 'PT Sans Narrow', sans-serif;
     float: left;
     list-style: none;
 }
@@ -39,7 +39,7 @@
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 1.2rem;
     color: black;
     outline: none;
     text-align: center;
