@@ -22,7 +22,7 @@ def down_src(html):
 	src=allre(r'src="(.*?)"').findall(html)
 	for s in src:
 		nsrc='src/'+s.replace(':','_').replace('/','_')
-		open(workdir+nsrc,"w").write(get_html(s))
+		open(workdir+nsrc,"wb").write(get_html(s))
 		html=html.replace(s,'../'+nsrc)
 	return html
 
