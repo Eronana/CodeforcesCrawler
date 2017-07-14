@@ -1,5 +1,6 @@
 import urllib
 import urllib2
+import json
 import re
 import os
 import sys
@@ -25,8 +26,15 @@ def down_src(html):
 		html=html.replace(s,'../'+nsrc)
 	return html
 
+def get_contest_amount():
+	c=json.loads(get_html('/api/contest.list'))['result']
+	ret=0
+	for cc in c:
+		if cc['phase']=='FINISHED':
+			ret=max(ret,cc['id'])
+	return ret
 def get_contest(c):
-	html=get_html("http://codeforces.com/contest/%d/problems"%c)
+	html=get_html("/contest/%d/problems"%c)
 	p=allre('class="caption">(.*?)</div>').findall(html)
 	if len(p)==0:
 		return None
@@ -37,6 +45,8 @@ def get_contest(c):
 def save_contest(contest):
 	cid=contest[0]
 	title=contest[1].replace('/','_')
+	title=title.replace('<br>','')
+	title=title.replace('<br_>','')
 	html=contest[2]
 	html_path=workdir+'html/[%02d]%s.html'%(cid,title)
 	open(html_path,'w').write(header+html)
@@ -68,6 +78,10 @@ else:
 	workdir="./"
 begin=int(sys.argv[1])
 end=int(sys.argv[2])
+if end==-1:
+	print "trying to get amount of contests:",
+	end=get_contest_amount()
+	print "%d"%end
 threads=int(sys.argv[3])
 for d in ['src','html']:
 	d=workdir+d
