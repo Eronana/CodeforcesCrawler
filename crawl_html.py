@@ -24,6 +24,7 @@ def down_src(html):
 		nsrc='src/'+s.replace(':','_').replace('/','_')
 		open(workdir+nsrc,"wb").write(get_html(s))
 		html=html.replace(s,'../'+nsrc)
+	html=html.replace('style="max-width: 100.0%;max-height: 100.0%;"','')  # windows workaround
 	return html
 
 def get_contest_amount():
