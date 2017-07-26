@@ -6,6 +6,8 @@ import os
 import sys
 import threading
 import HTMLParser
+
+pdfs=[]
 def get_html(url):
 	if url[0]=='/':
 		url='http://codeforces.com/'+url
@@ -50,6 +52,7 @@ def save_contest(contest):
 	title=title.replace('<br_>','')
 	html=contest[2]
 	html_path=workdir+'html/[%02d]%s.html'%(cid,title)
+	pdfs.append(html_path)
 	open(html_path,'w').write(header+html)
 class crawl_contest(threading.Thread):
     def __init__(this):
@@ -79,8 +82,15 @@ else:
 	workdir="./"
 begin=int(sys.argv[1])
 end=int(sys.argv[2])
+if begin==-1:
+	if not os.path.exists("./html/update"):
+		f=open("./html/update","w")
+		f.write("0")
+		f.close()
+	begin=int(open("./html/update","r").read())+1
+	print "crawl missing contests from %d:"%(begin)
 if end==-1:
-	print "trying to get amount of contests:",
+	print "trying to get amount of contests ... ",
 	end=get_contest_amount()
 	print "%d"%end
 threads=int(sys.argv[3])
@@ -92,5 +102,18 @@ for d in ['src','html']:
 lock = threading.RLock()
 header=open("header.html").read()
 print "crawl contest %d to %d\n%d threads used,save in %s"%(begin,end,threads,workdir)
+t=[]
 for i in range(threads):
-	crawl_contest().start()
+	t.append(crawl_contest())
+	t[len(t)-1].start()
+for i in t:
+	i.join()
+
+f=open("./html/update","w")
+f.write(str(end))
+f.close()
+print "converting into pdf..."
+for i in pdfs:
+	pdf_path="./pdf"+i.replace(".html",".pdf").replace("./html","")
+	os.system('wkhtmltopdf -q "%s" "%s"'%(i,pdf_path))
+	print "coverted:[%s]"%pdf_path
