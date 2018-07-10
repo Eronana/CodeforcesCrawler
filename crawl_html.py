@@ -10,7 +10,10 @@ import HTMLParser
 pdfs=[]
 def get_html(url):
 	if url[0]=='/':
-		url='http://codeforces.com/'+url
+		if url[1]!='/':
+			url='https://codeforces.com/'+url
+		else:
+			url="https:"+url
 	t=5
 	while t>0:
 		try:
