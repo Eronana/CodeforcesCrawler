@@ -118,5 +118,5 @@ f.close()
 print "converting into pdf..."
 for i in pdfs:
 	pdf_path="./pdf"+i.replace(".html",".pdf").replace("./html","")
-	os.system('wkhtmltopdf -q "%s" "%s"'%(i,pdf_path))
+	os.system('xvfb-run wkhtmltopdf -q --no-stop-slow-scripts --javascript-delay 10000 "%s" "%s"'%(i,pdf_path))
 	print "coverted:[%s]"%pdf_path
